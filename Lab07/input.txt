@@ -1,0 +1,10 @@
+cia-o
+oggi!
+nero
+vai
+b.ianco
+retta
+tavolo?
+stop
+
+^D
