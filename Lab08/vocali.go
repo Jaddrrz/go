@@ -3,14 +3,27 @@ package main
 import "bufio"
 import "fmt"
 import "os"
+import "strings"
 
 func contaVocali(s string, vocali map[rune]int) {
+    for _,v := range s {
+      if strings.ContainsRune("AEIOUaeiou", v) {
+        vocali[v] += 1
+      }
+    }
 }
 
 func main() {
-  vocali := map[rune]int{'A'}
-  //scanner := bufio.NewScanner(os.Stdin)
-  //scanner.Scan()
-  input := "jdhkas c'è dkasjhkdjashkdh askdh ksah @@@ €€€ ### Ħ  wi) Ø qwqwe qwyewquteuqwte q 312312 2312wweqe €łłŧŧŧŧŧ sdasdas AA JKJLKLJLKJ LIIIIII  u ù aeiou 	AEIO"
-  contaVocali(input, vocali)
+  vocali := make(map[rune]int)
+  scanner := bufio.NewScanner(os.Stdin)
+  for scanner.Scan() {
+    if err := scanner.Err(); err != nil {
+      break
+    }
+    riga := scanner.Text()
+    contaVocali(riga, vocali)
+  }
+  for i,v := range vocali {
+    fmt.Printf("%s : %d\n", string(i), v)
+  }
 }
