@@ -3,21 +3,21 @@ package main
 import "bufio"
 import "fmt"
 import "os"
+
 import "strconv"
 
 func recursiveMax(list []int) int {
-  fmt.Println(list)
+  fmt.Println(list[0])
   if len(list) == 1 {
     return list[0]
   } else {
     for i := 0; i < len(list); i++ {
-      if list[i] > list[len(list)-1] {
-        list[i], list[len(list)-1] = list[len(list)-1], list[i]
+      if list[i] > list[0] {
+        list[0] = list[i]
       }
     }
     return recursiveMax(list[:len(list)-1])
   }
-  
 }
 
 func main() {
