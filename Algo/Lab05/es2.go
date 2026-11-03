@@ -38,6 +38,19 @@ func merge(x, y []int) []int {
   return z
 }
 
+func mergeSort(x []int) []int {
+  if len(x) > 1 {
+    var b, c []int
+    m := len(x) / 2
+    b = append(b, x[:m]...)
+    c = append(c, x[m:]...)
+    b = mergeSort(b)
+    c = mergeSort(c)
+    x = merge(b, c)
+  }
+  return x
+}
+
 func generateArray(n int) []int {
   var res []int
   for i := 0; i < n; i++ {
@@ -67,7 +80,7 @@ func main() {
 
   
   fillArray(list, dim, n)
-  fmt.Println(merge(bubbleSort(list[0]), bubbleSort(list[1])))
+  fmt.Println(mergeSort(list[0]))
   fmt.Println(list)
   fmt.Println(mergeMultiple(list))
 
